@@ -7,42 +7,43 @@
   <style>
     :root {
       --gold: #d4af37;
+      --overlay: rgba(0, 0, 0, 0.4);
       --light-bg: #faf8f5;
-      --text: #333;
     }
 
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #fff;
       background-color: var(--light-bg);
-      color: var(--text);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
-      background: white;
-      border-bottom: 1px solid #eee;
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1rem 2rem;
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
     }
 
     header h1 {
       font-size: 1.5rem;
       color: var(--gold);
       letter-spacing: 1px;
+      margin: 0;
     }
 
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
-      color: var(--text);
+      color: white;
       font-weight: 500;
       transition: color 0.3s;
     }
@@ -52,89 +53,53 @@
     }
 
     section {
-      padding: 6rem 2rem 4rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 10rem 2rem 6rem;
-      background: url('https://images.unsplash.com/photo-1583454110551-21f2fa2e5258?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: white;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      color: white;
     }
 
-    .hero::after {
+    section::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
+      inset: 0;
+      background: var(--overlay);
     }
 
-    .hero-content {
+    section .content {
       position: relative;
       z-index: 1;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .classes, .instructors {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      text-align: center;
+      max-width: 800px;
       padding: 2rem;
-      background: #fff;
-      border-top: 1px solid #eee;
-      color: #555;
-      font-size: 0.9rem;
     }
 
-    .contact-info {
-      text-align: center;
-      line-height: 1.8;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #f5f5f5;
     }
 
     a.button {
       display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
       background: var(--gold);
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 25px;
       text-decoration: none;
-      margin-top: 1.5rem;
+      font-weight: 500;
       transition: background 0.3s;
     }
 
@@ -142,10 +107,47 @@
       background: #b89530;
     }
 
-    @media (max-width: 600px) {
-      .hero h2 {
-        font-size: 2.2rem;
-      }
+    footer {
+      background: black;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* Pexels-based section backgrounds */
+    #home {
+      background-image: url('https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    #about {
+      background-image: url('https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    #classes {
+      background-image: url('https://images.pexels.com/photos/4662337/pexels-photo-4662337.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    #instructors {
+      background-image: url('https://images.pexels.com/photos/4325467/pexels-photo-4325467.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    #schedule {
+      background-image: url('https://images.pexels.com/photos/3822864/pexels-photo-3822864.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    #contact {
+      background-image: url('https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      h2 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      header { padding: 1rem 1.5rem; }
     }
   </style>
 </head>
@@ -163,74 +165,61 @@
     </nav>
   </header>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h2>Find Your Balance at VV Studio</h2>
-      <p>Experience the harmony of movement, strength, and mindfulness through Pilates.</p>
-      <a href="#classes" class="button">View Classes</a>
+  <section id="home">
+    <div class="content">
+      <h2>Find Your Balance</h2>
+      <p>Welcome to VV Studio — a serene space for Pilates, mindfulness, and strength. Awaken your body and align your mind in harmony.</p>
+      <a href="#classes" class="button">Explore Classes</a>
     </div>
   </section>
 
   <section id="about">
-    <h2>About VV Studio</h2>
-    <p>
-      At VV Studio, we believe that wellness starts from within. Our serene Pilates studio offers personalized sessions and group classes designed to strengthen the body and calm the mind. Whether you’re a beginner or an experienced practitioner, our certified instructors are here to guide you every step of the way.
-    </p>
+    <div class="content">
+      <h2>About VV Studio</h2>
+      <p>
+        VV Studio is dedicated to holistic well-being through the power of mindful movement.  
+        Our tranquil environment and expert instructors create a nurturing space for growth, balance, and transformation.
+      </p>
+    </div>
   </section>
 
   <section id="classes">
-    <h2>Our Classes</h2>
-    <div class="classes">
-      <div class="card">
-        <h3>Mat Pilates</h3>
-        <p>A foundational class focusing on core strength, flexibility, and posture using only your body weight.</p>
-      </div>
-      <div class="card">
-        <h3>Reformer Pilates</h3>
-        <p>Enhance your movements with controlled resistance for improved muscle tone and alignment.</p>
-      </div>
-      <div class="card">
-        <h3>Private Sessions</h3>
-        <p>One-on-one instruction tailored to your specific needs and fitness goals.</p>
-      </div>
+    <div class="content">
+      <h2>Our Classes</h2>
+      <p>From beginner mat sessions to advanced reformer workouts, our classes are designed to suit every level. Discover your flow and elevate your strength.</p>
+      <a href="#schedule" class="button">View Schedule</a>
     </div>
   </section>
 
   <section id="instructors">
-    <h2>Meet Our Instructors</h2>
-    <div class="instructors">
-      <div class="card">
-        <h3>Vanessa Vega</h3>
-        <p>Founder and Lead Instructor with over 10 years of Pilates experience, focusing on mindful movement and form.</p>
-      </div>
-      <div class="card">
-        <h3>Clara Nguyen</h3>
-        <p>Certified Reformer Specialist, helping clients build core stability and graceful mobility.</p>
-      </div>
+    <div class="content">
+      <h2>Meet Our Instructors</h2>
+      <p>Our certified Pilates professionals bring expertise, compassion, and personalized guidance to every session.</p>
     </div>
   </section>
 
   <section id="schedule">
-    <h2>Class Schedule</h2>
-    <p>
-      Classes run daily from <strong>7:00 AM – 8:00 PM</strong>.  
-      Please contact us to book your session or check availability for private classes.
-    </p>
-    <a href="#contact" class="button">Book a Class</a>
+    <div class="content">
+      <h2>Class Schedule</h2>
+      <p>Join us daily from <strong>7 AM to 8 PM</strong>. Private and group sessions available upon request.</p>
+      <a href="#contact" class="button">Book Now</a>
+    </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-info">
-      <p><strong>Address:</strong> 45 Elm Street, New York, NY</p>
-      <p><strong>Phone:</strong> (212) 555-1023</p>
-      <p><strong>Email:</strong> hello@vvstudio.com</p>
-      <p>Follow us on Instagram @vvstudio</p>
+    <div class="content">
+      <h2>Contact Us</h2>
+      <p>
+        45 Elm Street, New York, NY  
+        <br> (212) 555-1023  
+        <br> hello@vvstudio.com  
+        <br> Follow us on Instagram @vvstudio
+      </p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 VV Studio | Designed with calm and care.</p>
+    © 2025 VV Studio — Designed with calm and care.
   </footer>
 </body>
 </html>
